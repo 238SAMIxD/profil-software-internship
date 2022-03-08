@@ -1,0 +1,17 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-bg-clr: #246CBE;
+    --secondary-bg-clr: #EDF4FC;
+    --primary-clr: #659FE2;
+    --secondary-clr: #143A67;
+    --accent-clr: #091E36;
+}
+
+body {
+    background-color: var(--primary-bg-clr);
+}
