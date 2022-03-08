@@ -1,5 +1,5 @@
 # Profil Software Internship Task
-Using free API to generate random user data from https://randomuser.me/
+Using free API to generate random user data from https://randomuser.me/  
 Created by **Samuel Jędrzejewski**
 
 # Functionalities
