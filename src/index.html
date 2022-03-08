@@ -10,6 +10,51 @@
     <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
 </head>
 <body>
-    
+    <header class="header">
+        <h1 class="header-title">Random User Data Generator</h1>
+        <h2 class="header-subtitle"><a class="header-subtitle__link" href="https://randomuser.me/" target="blank">RandomUser</a> API communication</h2>
+    </header>
+    <div class="container">
+        <a class="container-button" data-url="https://randomuser.me/api/?exc=cell,dob,email,gender,id,login,phone">Generate User</a>
+        <div class="container-address">
+            <input type="checkbox" class="container-address__checkbox" id="address">
+            <label for="address" class="container-address__label"><span class="container-address__label-check"></span>Hide address</label>
+        </div>
+        <div class="container-error"></div>
+        <div class="container-data">
+            <div class="container-data__firstName">
+                <span class="text">First Name:</span>
+                <span class="data"></span>
+            </div>
+            <div class="container-data__lastName">
+                <span class="text">Last Name:</span>
+                <span class="data"></span>
+            </div>
+            <div class="container-data__picture"></div>
+            <div class="container-data__registerDate">
+                <span class="text">Register Date:</span>
+                <span class="data"></span>
+            </div>
+            <div class="container-data__nationality">
+                <span class="text">Nationality:</span>
+                <span class="data"></span>
+            </div>
+            <div class="container-data__address">
+                <span class="text">Address:</span>
+                <div class="container-data__address-street">
+                    <span class="text">Street:</span>
+                <span class="data"></span>
+                </div>
+                <div class="container-data__address-city">
+                    <span class="text">First Name:</span>
+                <span class="data"></span>
+                </div>
+                <div class="container-data__address-country">
+                    <span class="text">First Name:</span>
+                <span class="data"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
