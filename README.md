@@ -41,7 +41,9 @@ async function generateUserFromUrl( e ) {
 
 ## 2. Generated user should be displayed on the page.
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/data.png) Flex styled data.
+![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/data.png)  
+
+Flex styled data.
 
 I created html placeholders for all the data and load it after fetching API response by inserting `innerText`.
 
@@ -59,7 +61,9 @@ As simple as that. Code from 1st and 2nd points does it every time after clickin
 
 ## 4. Add checkbox "Hide address".
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/checkbox.png) Checkbox with own style.
+![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/checkbox.png)  
+
+Checkbox with own style.
 
 I styled my own checkbox by setting `display: none;` on the checkbox and creating new mark by `::before` and `::after` pseudoelements.
 
@@ -85,7 +89,9 @@ I styled my own checkbox by setting `display: none;` on the checkbox and creatin
 
 ## 5. Only fetch the data you need.
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/hidden.png) Hidden address field.
+![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/hidden.png)  
+
+Hidden address field.
 
 As I found in the *RandomUser* API documentation, it is easy to fetch all the data except not needed. I added unnecessary fields to the `?exc=` endpoint as well as adding another not to fetch locaton data when checkbox is ckecked.
 
