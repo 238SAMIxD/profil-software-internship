@@ -2,8 +2,24 @@ const containerData = document.querySelector(".container-data");
 const generateUserButton = document.querySelector(".container-button");
 const adddressCheckbox = document.querySelector(".container-address__checkbox");
 const errorText = document.querySelector(".container-error");
+const containerTable = document.querySelector(".container-table");
 
-generateUserButton.onclick = generateUserFromUrl;
+switch( document.body.id ) {
+    case "index":
+        loadIndex();
+        break;
+    case "table":
+        loadTable();
+        break;
+}
+
+function loadIndex() {
+    generateUserButton.onclick = generateUserFromUrl;
+}
+
+function loadTable() {
+    
+}
 
 async function generateUserFromUrl( e ) {
     let url = e.target.dataset.url;
@@ -15,28 +31,28 @@ async function generateUserFromUrl( e ) {
 
 async function fetchData( url ) {
     fetch( url )
-    .then( response => response.json() )
-    .then( json => { return json.results[0]; } )
-    .then( data => {
-        if( data === undefined || data.error !== undefined ) {
-            errorText.style.display = "block";
-            return errorText.innerText = data ? data.error : "Unexpected error, try again later";
-        }
+        .then( response => response.json() )
+        .then( json => { return json.results[0]; } )
+        .then( data => {
+            if( data === undefined || data.error !== undefined ) {
+                errorText.style.display = "block";
+                return errorText.innerText = data ? data.error : "Unexpected error, try again later";
+            }
 
-        let date = new Date( data.registered.date );
+            let date = new Date( data.registered.date );
 
-        document.querySelector(".container-data__firstName > .data").innerText = data.name.first;
-        document.querySelector(".container-data__lastName > .data").innerText = data.name.last;
-        document.querySelector(".container-data__picture").style.background = `url(${data.picture.large}`;
-        document.querySelector(".container-data__registerDate > .data").innerText = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-        document.querySelector(".container-data__nationality > .data").innerText = data.nat;
-        getLocation( data );
+            document.querySelector(".container-data__firstName > .data").innerText = data.name.first;
+            document.querySelector(".container-data__lastName > .data").innerText = data.name.last;
+            document.querySelector(".container-data__picture").style.background = `url(${data.picture.large}`;
+            document.querySelector(".container-data__registerDate > .data").innerText = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+            document.querySelector(".container-data__nationality > .data").innerText = data.nat;
+            getLocation( data );
 
-        errorText.style.display = "none";
-        containerData.style.display = "block";
+            errorText.style.display = "none";
+            containerData.style.display = "block";
 
-        store( data );
-    });
+            store( data );
+        });
 }
 
 function getLocation( data ) {
