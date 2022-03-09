@@ -19,7 +19,6 @@ async function fetchData( url ) {
     .then( json => { return json.results[0]; } )
     .then( data => {
         if( data === undefined || data.error !== undefined ) {
-
             errorText.style.display = "block";
             return errorText.innerText = data ? data.error : "Unexpected error, try again later";
         }
@@ -35,6 +34,8 @@ async function fetchData( url ) {
 
         errorText.style.display = "none";
         containerData.style.display = "block";
+
+        store( data );
     });
 }
 
@@ -50,4 +51,19 @@ function getLocation( data ) {
     document.querySelector(".container-data__address-street").innerText = `${location.street.name} ${location.street.number}`;
     document.querySelector(".container-data__address-city").innerText = `${location.postcode} ${location.city}`;
     document.querySelector(".container-data__address-country").innerText = location.country;
+}
+
+function store( data ) {
+    if( !data ) return;
+
+    let dataArray = [];
+    dataArray.push( data );
+
+    if( localStorage.length === 0 || localStorage.getItem("random-data") === null ) return localStorage.setItem( "random-data", JSON.stringify( dataArray ) );
+
+    dataArray = JSON.parse( localStorage.getItem("random-data") ).concat( dataArray );
+    
+    if( dataArray.length > 10 ) dataArray.shift();
+
+    localStorage.setItem( "random-data", JSON.stringify( dataArray ) );
 }
