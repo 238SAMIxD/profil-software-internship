@@ -24,12 +24,99 @@ h2 {
 
 .header {
     background-color: var(--secondary-bg-clr);
-    padding: 2rem 0;
+    padding-bottom: 2rem;
     margin-bottom: 0.5em;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    padding-top: 1rem;
+}
+
+.navbar-label {
+    position: absolute;
+    top: 0.3em;
+    left: 0.3em;
+    width: 1em;
+    aspect-ratio: 1;
+    z-index: 2;
+}
+
+.navbar-label__toggle,
+.navbar-label__toggle::before,
+.navbar-label__toggle::after {
+    display: block;
+    width: 1rem;
+    aspect-ratio: 8;
+    background: black;
+    border-radius: 0.5rem;
+}
+
+.navbar-label__toggle {
+    position: relative;
+}
+
+.navbar-label__toggle::before, .navbar-label__toggle::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: inherit;
+}
+
+.navbar-label__toggle::before {
+    transform: translateY(0.4rem);
+}
+
+.navbar-label__toggle::after {
+    transform: translateY(0.8rem);
+}
+
+.navbar-checkbox {
+    display: none;
+}
+
+.navbar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 75vw;
+    opacity: 0.85;
+    background-color: white;
+    list-style-type: none;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms ease-in-out;
+    z-index: 1;
+}
+
+.navbar-menu a {
+    color: var(--accent-clr);
+    text-decoration: none;
+    transition: background-color 150ms ease-in-out;
+}
+
+.navbar-menu a:hover {
+    background-color: #e0e0e0;
+}
+
+.navbar-menu__item {
+    padding-left: 0.5rem;
+    font-size: 2rem;
+}
+
+.navbar-checkbox:checked ~ .navbar-menu {
+    transform: scaleX(1);
 }
 
 .header-title {
     color: var(--secondary-clr);
+    margin-top: 0.5rem;
 }
 
 .header-subtitle {
@@ -39,7 +126,6 @@ h2 {
 .header-subtitle__link {
     text-decoration: none;
     color: inherit;
-    filter: brightness(1.2);
     font-style: italic;
     transition: opacity 150ms ease-in-out;
 }
@@ -65,12 +151,13 @@ h2 {
     padding: .25rem .5rem;
     border-radius: 0.5rem;
     cursor: pointer;
-    transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
+    transition: background-color 150ms ease-in-out, color 100ms ease-in-out;
 }
 
 .container-button:hover {
     background-color: var(--secondary-bg-clr);
     color: var(--accent-clr);
+    box-shadow: 0.5rem 0.5rem 10px var(--accent-clr);
 }
 
 .container-address__checkbox {
@@ -112,6 +199,7 @@ h2 {
     border-radius: 0.15rem;
     position: relative;
     transition: width 100ms ease-in-out;
+    z-index: -1;
 }
 
 .container-address__label-check::before {
@@ -158,4 +246,23 @@ h2 {
 
 .container-data__address > :not(:first-child) {
     padding-left: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+    .navbar-label {
+        display: none;
+    }
+
+    .navbar-menu {
+        flex-direction: row;
+        height: unset;
+        padding-top: 0;
+        width: 100%;
+        transform: scale(1);
+    }
+
+    .navbar-menu__item {
+        font-size: 1.5rem;
+        padding: 0 0.5rem;
+    }
 }
