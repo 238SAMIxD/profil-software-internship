@@ -24,7 +24,8 @@ In this section I will present my solution to the given assesments.
 
 ## 1. Display a button that should generate a new user.
 
-![Button preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/button.png) Simple styled button.
+![Button preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/button.png)
+Simple styled button.
 
 I used `querySelector()` to find the button, added `onclick` functionality and created function that allows calling another data fetching function.
 
