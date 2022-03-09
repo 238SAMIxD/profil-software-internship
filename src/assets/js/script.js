@@ -60,6 +60,7 @@ function getLocation( data ) {
         document.querySelector(".container-data__address-street").innerText = "hidden";
         document.querySelector(".container-data__address-city").innerText = null;
         document.querySelector(".container-data__address-country").innerText = null;
+        return;
     };
 
     let location = data.location;
