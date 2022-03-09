@@ -20,11 +20,11 @@ The goal is to write an application that will communicate with this API and have
 
 In this section I will present my solution to the given assesments.
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/title.jpg?raw=true)
+![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/title.jpg?token=GHSAT0AAAAAABRGFU5VXAX6SSRUGA4Y75VOYRR5ADQ)
 
 ## 1. Display a button that should generate a new user.
 
-![Button preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/button.jpg?raw=true) Simple styled button.
+![Button preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/button.jpg?token=GHSAT0AAAAAABRGFU5VXAX6SSRUGA4Y75VOYRR5ADQ) Simple styled button.
 
 I used `querySelector()` to find the button, added `onclick` functionality and created function that allows calling another data fetching function.
 
@@ -39,7 +39,7 @@ async function generateUserFromUrl( e ) {
 
 ## 2. Generated user should be displayed on the page.
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/data.jpg?raw=true) Flex styled data.
+![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/data.jpg?token=GHSAT0AAAAAABRGFU5VXAX6SSRUGA4Y75VOYRR5ADQ) Flex styled data.
 
 I created html placeholders for all the data and load it after fetching API response by inserting `innerText`.
 
@@ -57,7 +57,7 @@ As simple as that. Code from 1st and 2nd points does it every time after clickin
 
 ## 4. Add checkbox "Hide address".
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/checkbox.jpg?raw=true) Checkbox with own style.
+![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/checkbox.jpg?token=GHSAT0AAAAAABRGFU5VXAX6SSRUGA4Y75VOYRR5ADQ) Checkbox with own style.
 
 I styled my own checkbox by setting `display: none;` on the checkbox and creating new mark by `::before` and `::after` pseudoelements.
 
@@ -83,7 +83,7 @@ I styled my own checkbox by setting `display: none;` on the checkbox and creatin
 
 ## 5. Only fetch the data you need.
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/hidden.jpg?raw=true) Hidden address field.
+![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/hidden.jpg?token=GHSAT0AAAAAABRGFU5VXAX6SSRUGA4Y75VOYRR5ADQ) Hidden address field.
 
 As I found in the *RandomUser* API documentation, it is easy to fetch all the data except not needed. I added unnecessary fields to the `?exc=` endpoint as well as adding another not to fetch locaton data when checkbox is ckecked.
 
