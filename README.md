@@ -18,7 +18,7 @@ The goal is to write an application that will communicate with this API and have
 
 # Description
 
-In this section I will present my solution to the given assesments.
+In this section I will present my solution to the given assesments. Notice: all the code in the blocks below are minified and are used only to show the purpose.
 
 ![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/title.png)
 
