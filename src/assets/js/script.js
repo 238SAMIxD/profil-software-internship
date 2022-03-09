@@ -18,7 +18,7 @@ function loadIndex() {
 }
 
 function loadTable() {
-    
+
 }
 
 async function generateUserFromUrl( e ) {
@@ -43,7 +43,7 @@ async function fetchData( url ) {
 
             document.querySelector(".container-data__firstName > .data").innerText = data.name.first;
             document.querySelector(".container-data__lastName > .data").innerText = data.name.last;
-            document.querySelector(".container-data__picture").style.background = `url(${data.picture.large}`;
+            document.querySelector(".container-data__picture").style.backgroundImage = `url(${data.picture.large}`;
             document.querySelector(".container-data__registerDate > .data").innerText = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
             document.querySelector(".container-data__nationality > .data").innerText = data.nat;
             getLocation( data );

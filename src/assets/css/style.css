@@ -139,6 +139,17 @@ h2 {
 
 .container-data {
     display: none;
+    position: relative;
+}
+
+.container-data__picture {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2.75rem;
+    aspect-ratio: 1;
+    background-size: cover;
+    z-index: -1;
 }
 
 .text {
