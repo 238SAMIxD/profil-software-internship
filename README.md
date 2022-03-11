@@ -146,13 +146,12 @@ const data = JSON.parse( localStorage.getItem("random-data") );
 ```
 
 ```json
-0: Object { name: {…}, location: {…}, nat: "US", … }
-location: Object { city: "Sacramento", state: "Virginia", country: "United States", … }​
-name: Object { title: "Mr", first: "Miguel", last: "Rodriquez" }​​
+[0: { name: {…}, location: {…}, nat: "US", … }
+location: { city: "Sacramento", state: "Virginia", country: "United States", … }​
+name: { title: "Mr", first: "Miguel", last: "Rodriquez" }​​
 nat: "US"​​
-picture: Object { large: "https://randomuser.me/api/portraits/men/5.jpg", medium: "https://randomuser.me/api/portraits/med/men/5.jpg", thumbnail: "https://randomuser.me/api/portraits/thumb/men/5.jpg" }​​
-registered: Object { date: "2008-07-07T05:05:13.387Z", age: 14 }​​
-<prototype>: Object { … }
+picture: { large: "https://randomuser.me/api/portraits/men/5.jpg", medium: "https://randomuser.me/api/portraits/med/men/5.jpg", thumbnail: "https://randomuser.me/api/portraits/thumb/men/5.jpg" }​​
+registered: { date: "2008-07-07T05:05:13.387Z", age: 14 }]​​
 ```
 
 ## 7. Allow sorting table by last name and registration date.
