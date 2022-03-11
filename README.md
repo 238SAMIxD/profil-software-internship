@@ -20,7 +20,7 @@ The goal is to write an application that will communicate with this API and have
 
 In this section I will present my solution to the given assesments. Notice: all the code in the blocks below are minified and are used only to show the purpose.
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/title.png)
+![Header preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/title.png)
 
 ## 1. Display a button that should generate a new user.
 
@@ -41,7 +41,7 @@ async function generateUserFromUrl( e ) {
 
 ## 2. Generated user should be displayed on the page.
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/data.png)  
+![Data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/data.png)  
 
 Flex styled data.
 
@@ -56,9 +56,9 @@ document.querySelector(".container-user__name-nationality").style.backgroundImag
 
 ## 3. Clicking the button again should replace the previous user with the new one.
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/loading.png)  
+![Loading preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/loading.png)  
 
-Simple loading animation
+Simple loading animation.
 
 Button click allows to regenerate data by fetching another request. I added simple loading animation to prevent images showing blank space instead of actual image.
 
@@ -79,7 +79,7 @@ loadImage( imageSrc )
 
 ## 4. Add checkbox "Hide address".
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/checkbox.png)  
+![Checkbox preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/checkbox.png)  
 
 Checkbox with own style.
 
@@ -107,7 +107,7 @@ I styled my own checkbox by setting `display: none;` on the checkbox and creatin
 
 ## 5. Only fetch the data you need.
 
-![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/hidden.png)  
+![Address preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/hidden.png)  
 
 Hidden address field.
 
@@ -124,7 +124,36 @@ if( adddressCheckbox.checked ) url += ",location";
 
 ## 6. Create a separate page to display a table with the last 10 generated users
 
-***In progress***
+![Table preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/table.png)  
+
+![Table preview on mobile](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/table-mobile.png)  
+
+Responsive table with last 10 users.
+
+I created two table views: one for the mobile users, one for desktop ones. Users are stored in the `localStorage` and after `window.onload` event is called, I append one by one to the original table.
+
+```javascript
+data.forEach( element => {
+    row.append( firstName, lastName, country, registrationDate );
+    containerTable.appendChild( row );
+});
+```
+
+Data in the `localStorage` is stringified so I can easily parse it to the JSON and handle it within *JavaScript*.
+
+```javascript
+const data = JSON.parse( localStorage.getItem("random-data") );
+```
+
+```json
+0: Object { name: {…}, location: {…}, nat: "US", … }
+location: Object { city: "Sacramento", state: "Virginia", country: "United States", … }​
+name: Object { title: "Mr", first: "Miguel", last: "Rodriquez" }​​
+nat: "US"​​
+picture: Object { large: "https://randomuser.me/api/portraits/men/5.jpg", medium: "https://randomuser.me/api/portraits/med/men/5.jpg", thumbnail: "https://randomuser.me/api/portraits/thumb/men/5.jpg" }​​
+registered: Object { date: "2008-07-07T05:05:13.387Z", age: 14 }​​
+<prototype>: Object { … }
+```
 
 ## 7. Allow sorting table by last name and registration date.
 
