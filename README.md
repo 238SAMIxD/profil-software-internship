@@ -146,12 +146,7 @@ const data = JSON.parse( localStorage.getItem("random-data") );
 ```
 
 ```json
-[0: { name: {…}, location: {…}, nat: "US", … }
-location: { city: "Sacramento", state: "Virginia", country: "United States", … }​
-name: { title: "Mr", first: "Miguel", last: "Rodriquez" }​​
-nat: "US"​​
-picture: { large: "https://randomuser.me/api/portraits/men/5.jpg", medium: "https://randomuser.me/api/portraits/med/men/5.jpg", thumbnail: "https://randomuser.me/api/portraits/thumb/men/5.jpg" }​​
-registered: { date: "2008-07-07T05:05:13.387Z", age: 14 }]​​
+[0:{"name":{"title":"Mr","first":"Miguel","last":"Rodriquez"},"location":{"street":{"number":6738,"name":"Photinia Ave"},"city":"Sacramento","state":"Virginia","country":"United States","postcode":48481,"coordinates":{"latitude":"88.2381","longitude":"-64.7263"},"timezone":{"offset":"-7:00","description":"Mountain Time (US & Canada)"}},"registered":{"date":"2008-07-07T05:05:13.387Z","age":14},"picture":{"large":"https://randomuser.me/api/portraits/men/5.jpg","medium":"https://randomuser.me/api/portraits/med/men/5.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/5.jpg"},"nat":"US"}]
 ```
 
 ## 7. Allow sorting table by last name and registration date.
