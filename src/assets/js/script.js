@@ -47,6 +47,7 @@ async function fetchData( url ) {
 
             document.querySelector(".container-user__name-full").innerText = `${data.name.first} ${data.name.last}`;
             document.querySelector(".container-user__created").innerText = `Created: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+            document.querySelector(".container-user__name-nationality").dataset.nat = data.nat;
             getLocation( data );
 
             let imageSrc = window.innerWidth > 600 ? data.picture.large : data.picture.medium;

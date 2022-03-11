@@ -324,6 +324,42 @@ h2 {
     vertical-align: middle;
     transform: skew(0) scale(1);
     animation: wave 2s ease-in-out 250ms infinite alternate;
+    position: relative;
+}
+
+.container-user__name-nationality::before,
+.container-user__name-nationality::after {
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 150ms ease-in-out;
+}
+
+.container-user__name-nationality::before {
+    content: attr(data-nat);
+    bottom: calc(100% + 0.5rem);
+    width: 100%;
+    font-size: 0.75rem;
+    text-align: center;
+    background-color: var(--primary-bg-clr);
+    border-radius: 0.25rem;
+}
+
+.container-user__name-nationality::after {
+    --border-width: 0.25rem;
+    content: '';
+    bottom: calc(100% + 0.3rem);
+    left: 1rem;
+    width: 0;
+    height: 0;
+    border-left: var(--border-width) solid transparent;
+    border-right: var(--border-width) solid transparent;
+    border-top: var(--border-width) solid var(--primary-bg-clr);
+}
+
+.container-user__name-nationality:hover::before,
+.container-user__name-nationality:hover::after {
+    transform: scale(1);
 }
 
 .container-user__address {
@@ -426,6 +462,16 @@ h2 {
     .container-user__name-nationality {
         width: 3.5rem;
         margin-inline-start: 1rem;
+    }
+
+    .container-user__name-nationality::before {
+        font-size: 1.25rem;
+    }
+
+    .container-user__name-nationality::after {
+        --border-width: 0.5rem;
+        bottom: calc(100% + 0.2rem);
+        left: 1.25rem;
     }
 
     .container-user__address {
