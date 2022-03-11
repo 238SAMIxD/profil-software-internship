@@ -384,6 +384,69 @@ h2 {
     color: var(--accent-clr);
 }
 
+.container-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    width: 90vw;
+    color: var(--secondary-clr);
+}
+
+.container-table__header {
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+    font-weight: 700;
+}
+
+.table-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    padding: 0.25rem;
+    outline: 1px solid var(--accent-clr);
+    border-radius: 0.5rem;
+    transition: background-color 200ms ease-in-out;
+}
+
+.table-row > div {
+    display: flex;
+    justify-content: space-between;
+    width: inherit;
+    padding-inline-end: 1rem;
+    text-align: center;
+    position: relative;
+    transition: background-color 200ms ease-in-out;
+}
+
+.table-row > div::before {
+    content: attr(data-label);
+    padding-inline-start: 1rem;
+}
+
+.table-row > div::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent-clr);
+    z-index: 1;
+}
+
+.table-row > div:last-child::after {
+    width: 0;
+}
+
+.table-row > div:hover {
+    background-color: var(--secondary-bg-clr);
+}
+
 @media screen and (min-width: 600px) {
     .navbar-label {
         display: none;
@@ -476,6 +539,60 @@ h2 {
 
     .container-user__address {
         margin-block-end: 3rem;
+    }
+
+    .container-table {
+        gap: 0;
+        width: 80vw;
+        outline: 1px solid var(--accent-clr);
+    }
+
+    .container-table__header {
+        position: initial;
+        top: unset;
+        left: unset;
+    }
+
+    .table-row {
+        flex-direction: row;
+        outline: unset;
+        position: relative;
+    }
+
+    .table-row > div::before,
+    .table-row > div::after {
+        content: unset;
+    }
+
+    .table-row::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--accent-clr);
+        z-index: 1;
+    }
+
+    .table-row:nth-child(even) {
+        background-color: var(--secondary-bg-clr);
+    }
+
+    .table-row:not(:first-child):hover {
+        background-color: var(--btn-bg-clr);
+    }
+
+    .table-row > div {
+        justify-content: center;
+    }
+
+    .table-row > div:hover {
+        background-color: initial;
+    }
+
+    .table-row:not(:first-child) > div:hover {
+        background-color: var(--secondary-bg-clr);
     }
 }
 

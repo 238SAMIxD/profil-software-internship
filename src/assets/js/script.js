@@ -19,10 +19,10 @@ function loadIndex() {
 }
 
 function loadTable() {
-
+    window.onload = loadDataFromLocalStorage;
 }
 
-async function generateUserFromUrl( e ) {
+function generateUserFromUrl( e ) {
     let url = e.target.dataset.url;
 
     if( adddressCheckbox.checked ) url += ",location";
@@ -33,7 +33,7 @@ async function generateUserFromUrl( e ) {
     fetchData( url );
 }
 
-async function fetchData( url ) {
+function fetchData( url ) {
     fetch( url )
         .then( response => response.json() )
         .then( json => { return json.results[0]; } )
@@ -43,7 +43,7 @@ async function fetchData( url ) {
                 return errorText.innerText = data ? data.error : "Unexpected error, try again later";
             }
 
-            let date = new Date( data.registered.date );
+            const date = new Date( data.registered.date );
 
             document.querySelector(".container-user__name-full").innerText = `${data.name.first} ${data.name.last}`;
             document.querySelector(".container-user__created").innerText = `Created: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
@@ -112,5 +112,40 @@ function loadImage( src ) {
         image.addEventListener('error', reject);
 
         image.src = src;
+    });
+}
+
+function loadDataFromLocalStorage( e ) {
+    const data = JSON.parse( localStorage.getItem("random-data") );
+    const itemClassName = "container-table__item";
+
+    if( data === null ) return containerTable.append("No data to show.");
+    
+    data.forEach( element => {
+        const date = new Date( element.registered.date );
+
+        let row = document.createElement("div");
+        let firstName = document.createElement("div");
+        let lastName = document.createElement("div");
+        let registrationDate = document.createElement("div");
+        let country = document.createElement("div");
+
+        row.className = "container-table__item table-row";
+        firstName.classList.add( itemClassName, "table-firstName" );
+        firstName.dataset.label = "First Name";
+        lastName.classList.add( itemClassName, "table-lastName" );
+        lastName.dataset.label = "Last Name";
+        country.classList.add( itemClassName, "table-country" );
+        country.dataset.label = "Country";
+        registrationDate.classList.add( itemClassName, "table-registrationDate" );
+        registrationDate.dataset.label = "Registration Date";
+
+        firstName.innerText = element.name.first;
+        lastName.innerText = element.name.last;
+        country.innerText = element.location.country;
+        registrationDate.innerText = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+
+        row.append( firstName, lastName, country, registrationDate );
+        containerTable.appendChild( row );
     });
 }
