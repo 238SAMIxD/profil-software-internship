@@ -10,17 +10,16 @@
     <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
 </head>
 <body id="index">
-    <nav class="navbar">
-        <label for="navbar-checkbox" class="navbar-label"><span class="navbar-label__toggle"></span></label>
-        <input type="checkbox" id="navbar-checkbox" class="navbar-checkbox">
-        <ul class="navbar-menu">
-            <a href="index.html"><li class="navbar-menu__item">Home</li></a>
-            <a href="table.html"><li class="navbar-menu__item">Table</li></a>
-        </ul>
-    </nav>
     <header class="header">
         <h1 class="header-title">Random User Data Generator</h1>
         <h2 class="header-subtitle"><a class="header-subtitle__link" href="https://randomuser.me/" target="blank">RandomUser</a> API communication</h2>
+        <nav class="navbar">
+            <a class="navbar-label" href="#"><span class="navbar-label__toggle"></span></a>
+            <ul class="navbar-menu">
+                <a href="index.html"><li class="navbar-menu__item">Home</li></a>
+                <a href="table.html"><li class="navbar-menu__item">Table</li></a>
+            </ul>
+        </nav>
     </header>
     <div class="container">
         <a class="container-button" data-url="https://randomuser.me/api/?exc=cell,dob,email,gender,id,login,phone">Generate User</a>
@@ -29,39 +28,22 @@
             <label for="address" class="container-address__label"><span class="container-address__label-check"></span>Hide address</label>
         </div>
         <div class="container-error"></div>
-        <div class="container-data">
-            <div class="container-data__firstName">
-                <span class="text">First Name:</span>
-                <span class="data"></span>
+        <div class="container-loading">
+            <div class="container-loading__loader"></div>
+        </div>
+        <div class="container-user">
+            <div class="container-user__background"></div>
+            <div class="container-user__picture"></div>
+            <div class="container-user__name">
+                <span class="container-user__name-full"></span><span class="container-user__name-nationality"></span>
             </div>
-            <div class="container-data__lastName">
-                <span class="text">Last Name:</span>
-                <span class="data"></span>
+            <div class="container-user__address">
+                <span class="container-user__address-title">Address:</span>
+                <div class="container-user__address-street"></div>
+                <div class="container-user__address-city"></div>
+                <div class="container-user__address-country"></div>
             </div>
-            <div class="container-data__picture"></div>
-            <div class="container-data__registerDate">
-                <span class="text">Register Date:</span>
-                <span class="data"></span>
-            </div>
-            <div class="container-data__nationality">
-                <span class="text">Nationality:</span>
-                <span class="data"></span>
-            </div>
-            <div class="container-data__address">
-                <span class="text">Address:</span>
-                <div class="container-data__address-street">
-                    <span class="text">Street:</span>
-                <span class="data"></span>
-                </div>
-                <div class="container-data__address-city">
-                    <span class="text">First Name:</span>
-                <span class="data"></span>
-                </div>
-                <div class="container-data__address-country">
-                    <span class="text">First Name:</span>
-                <span class="data"></span>
-                </div>
-            </div>
+            <div class="container-user__created"></div>
         </div>
     </div>
 </body>
