@@ -45,19 +45,37 @@ async function generateUserFromUrl( e ) {
 
 Flex styled data.
 
-I created html placeholders for all the data and load it after fetching API response by inserting `innerText`.
+I created html placeholders for all the data and load it after fetching API response by inserting `innerText` or `style.backgroundImage`.
 
 ```javascript
-document.querySelector(".container-data__firstName > .data").innerText = data.name.first;
-document.querySelector(".container-data__lastName > .data").innerText = data.name.last;
-document.querySelector(".container-data__picture").style.backgroundImage = `url(${data.picture.large}`;
-document.querySelector(".container-data__registerDate > .data").innerText = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-document.querySelector(".container-data__nationality > .data").innerText = data.nat;
+document.querySelector(".container-user__name-full").innerText = `${data.name.first} ${data.name.last}`;
+document.querySelector(".container-user__created").innerText = `Created: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+document.querySelector(".container-user__picture").style.backgroundImage = `url("${imageSrc}")`;
+document.querySelector(".container-user__name-nationality").style.backgroundImage = `url("${imageSrc}")`;
 ```
 
 ## 3. Clicking the button again should replace the previous user with the new one.
 
-As simple as that. Code from 1st and 2nd points does it every time after clicking.
+![Generated data preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/loading.png)  
+
+Simple loading animation
+
+Button click allows to regenerate data by fetching another request. I added simple loading animation to prevent images showing blank space instead of actual image.
+
+```javascript
+function loadImage( src ) {
+    return new Promise( ( resolve, reject ) => {
+        const image = new Image();
+        image.addEventListener('load', resolve);
+        image.addEventListener('error', reject);
+        image.src = src;
+    });
+}
+loadImage( imageSrc )
+    .then( () => {
+        document.querySelector(".container-user__picture").style.backgroundImage = `url("${imageSrc}")`;
+    });
+```
 
 ## 4. Add checkbox "Hide address".
 
