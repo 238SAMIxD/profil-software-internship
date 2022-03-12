@@ -167,9 +167,70 @@ const data = JSON.parse( localStorage.getItem("random-data") );
 
 ## 7. Allow sorting table by last name and registration date.
 
-***In progress***
+![Sorting preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/sort.png)  
 
+![Sorting preview on mobile](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/sort-mobile.png)  
+
+Table sorting.  
+
+Sorting the table by `String.prototype.sort()` method. Removing loaded data and appending sorted rows instead. On mobile there is a button added to select right sort option. On desktop it is easy to sort by specific column by clicking on it.
+
+```javascript
+function sortData( data, column, parameter ) {
+    switch( column ) {
+        case "lastName":
+            data.sort( ( item1, item2 ) => {
+                return parameter == "asc" ? item1.name.last.localeCompare( item2.name.last ) : item2.name.last.localeCompare( item1.name.last );
+            });
+            break;
+        case "registrationDate":
+            data.sort( ( item1, item2 ) => {
+                return parameter == "asc" ? new Date( item1.registered.date ) - new Date( item2.registered.date ) : new Date( item2.registered.date ) - new Date( item1.registered.date );
+            });
+            break;
+    }
+    return data;
+}
+```
 
 ## 8. Data in the table should be saved after leaving the page and set on init.
 
-***In progress***
+![Local storage preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/localStorage.png)  
+
+Data stored in local storage. 
+
+Generated users data is stored in `localStorage` as well as information about sorting. Initially data is sorted by generating order but after interacting with any sort type it will be displayed in that order after reloading page.
+
+```javascript
+loadData( sortData( data, sortedBy.column, sortedBy.parameter ) );
+```
+
+```javascript
+function loadData( data ) {
+    const itemClassName = "container-table__item";
+    if( data === null ) return containerTable.append("No data to show.");
+    data.forEach( element => {
+        const date = new Date( element.registered.date );
+        let row = document.createElement("div");
+        let firstName = document.createElement("div");
+        let lastName = document.createElement("div");
+        let registrationDate = document.createElement("div");
+        let country = document.createElement("div");
+        row.className = "container-table__item table-row";
+        firstName.classList.add( itemClassName, "table-firstName" );
+        firstName.dataset.label = "First Name";
+        lastName.classList.add( itemClassName, "table-lastName" );
+        lastName.dataset.label = "Last Name";
+        country.classList.add( itemClassName, "table-country" );
+        country.dataset.label = "Country";
+        registrationDate.classList.add( itemClassName, "table-registrationDate" );
+        registrationDate.dataset.label = "Registration Date";
+        firstName.innerText = element.name.first;
+        lastName.innerText = element.name.last;
+        country.innerText = element.location.country;
+        registrationDate.innerText = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+        row.append( firstName, lastName, country, registrationDate );
+        containerTable.appendChild( row );
+    });
+}
+```
