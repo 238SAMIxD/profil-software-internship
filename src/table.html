@@ -27,10 +27,12 @@
     <div class="container">
         <div class="container-table">
             <div class="container-table__header table-row">
-                <div class="container-table__header table-firstName">First Name</div>
-                <div class="container-table__header table-lastName">Last Name</div>
-                <div class="container-table__header table-country">Country</div>
-                <div class="container-table__header table-registrationDate">Registration Date</div>
+                <input type="checkbox" class="container-table__header-checkbox registrationDate-checkbox" id="registrationDate-checkbox">
+                <input type="checkbox" class="container-table__header-checkbox lastName-checkbox" id="lastName-checkbox">
+                <div class="container-table__header-item table-firstName">First Name</div>
+                <div class="container-table__header-item table-lastName"><label for="lastName-checkbox" class="container-table__header-item__label"></label>Last Name</div>
+                <div class="container-table__header-item table-country">Country</div>
+                <div class="container-table__header-item table-registrationDate"><label for="registrationDate-checkbox" class="container-table__header-item__label"></label>Registration Date</div>
             </div>
         </div>
     </div>

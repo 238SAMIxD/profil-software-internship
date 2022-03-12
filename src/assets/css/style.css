@@ -12,6 +12,7 @@
     --accent-clr: #ccc;
     --btn-bg-clr: #026e00;
     --btn-bg-hover-clr: #43853d;
+    --table-bg-clr: #343a40;
 }
 
 body {
@@ -351,7 +352,6 @@ h2 {
     bottom: calc(100% + 0.3rem);
     left: 1rem;
     width: 0;
-    height: 0;
     border-left: var(--border-width) solid transparent;
     border-right: var(--border-width) solid transparent;
     border-top: var(--border-width) solid var(--primary-bg-clr);
@@ -409,8 +409,7 @@ h2 {
     align-items: center;
     width: inherit;
     padding: 0.25rem;
-    outline: 1px solid var(--accent-clr);
-    border-radius: 0.5rem;
+    /* outline: 1px solid var(--accent-clr); */
     transition: background-color 200ms ease-in-out;
 }
 
@@ -419,25 +418,17 @@ h2 {
     justify-content: space-between;
     width: inherit;
     padding-inline-end: 1rem;
+    padding-block: 1rem;
+    background-color: var(--table-bg-clr);
     text-align: center;
-    position: relative;
+    margin-block-end: 0.25rem;
     transition: background-color 200ms ease-in-out;
+    position: relative;
 }
 
 .table-row > div::before {
     content: attr(data-label);
     padding-inline-start: 1rem;
-}
-
-.table-row > div::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--accent-clr);
-    z-index: 1;
 }
 
 .table-row > div:last-child::after {
@@ -448,7 +439,44 @@ h2 {
     background-color: var(--secondary-bg-clr);
 }
 
-@media screen and (min-width: 600px) {
+.container-table__header-item.table-lastName,
+.container-table__header-item.table-registrationDate {
+    cursor: pointer;
+    isolation: isolate;
+}
+
+.container-table__header-item.table-lastName::after,
+.container-table__header-item.table-registrationDate::after {
+    --border-width: 0.5rem;
+    content: '';
+    width: 0;
+    margin-block: auto;
+    margin-inline-start: var(--border-width);
+    border-left: var(--border-width) solid transparent;
+    border-right: var(--border-width) solid transparent;
+    border-top: var(--border-width) solid var(--secondary-clr);
+    transition: transform 100ms ease-in-out;
+}
+
+.container-table__header-checkbox {
+    display: none;
+}
+
+.lastName-checkbox:checked ~ .table-lastName::after {
+    transform: rotate(-180deg);
+}
+
+.registrationDate-checkbox:checked ~ .table-registrationDate::after {
+    transform: rotate(-180deg);
+}
+
+.container-table__header-item__label {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 800px) {
     .navbar-label {
         display: none;
     }
@@ -545,20 +573,21 @@ h2 {
     .container-table {
         gap: 0;
         width: 80vw;
-        outline: 1px solid var(--accent-clr);
+    }
+
+    .table-row {
+        flex-direction: row;
+        position: relative;
+        transition: opacity 400ms ease-in-out;
+        padding: 0;
+        margin-block-end: 0.25rem;
     }
 
     .container-table__header {
         position: initial;
         top: unset;
         left: unset;
-    }
-
-    .table-row {
-        flex-direction: row;
-        outline: unset;
-        position: relative;
-        border-radius: 0;
+        margin-block-end: 0.35rem;
     }
 
     .table-row > div::before,
@@ -566,39 +595,30 @@ h2 {
         content: unset;
     }
 
-    .table-row::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background-color: var(--accent-clr);
-        z-index: 1;
+    .table-row > div {
+        justify-content: center;
+        margin: 0;
     }
 
-    .container-table__header::after {
-        height: 3px;
+    .table-row:first-child > div:hover {
+        background-color: var(--table-bg-clr);
     }
 
-    .table-row:nth-child(even) {
-        background-color: var(--secondary-bg-clr);
-    }
-
-    .table-row:not(:first-child):hover {
-        background-color: #1c212f;
-    }
-
-    .table-row:nth-child(even):hover {
+    .table-row:not(:first-child):hover > div {
         background-color: #35426a;
     }
 
-    .table-row > div {
-        justify-content: center;
+    .table-row:not(:first-child) > div:hover {
+        opacity: 0.85;
     }
 
-    .table-row > div:hover {
-        background-color: initial;
+    .table-row > div:first-child {
+        justify-content: start;
+        padding-inline-start: 1rem;
+    }
+
+    .table-row > div:last-child {
+        justify-content: end;
     }
 }
 
