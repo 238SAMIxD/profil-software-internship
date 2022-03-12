@@ -33,7 +33,7 @@ I used `querySelector()` to find the button, added `onclick` functionality and c
 ```javascript
 const generateUserButton = document.querySelector(".container-button");
 generateUserButton.onclick = generateUserFromUrl;
-async function generateUserFromUrl( e ) {
+function generateUserFromUrl( e ) {
     let url = e.target.dataset.url;
     fetchData( url );
 }
