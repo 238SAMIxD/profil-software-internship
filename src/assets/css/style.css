@@ -392,6 +392,7 @@ h2 {
     gap: 1.5rem;
     width: 90vw;
     color: var(--secondary-clr);
+    margin-block-end: 1rem;
 }
 
 .container-table__header {
@@ -557,6 +558,7 @@ h2 {
         flex-direction: row;
         outline: unset;
         position: relative;
+        border-radius: 0;
     }
 
     .table-row > div::before,
@@ -575,12 +577,20 @@ h2 {
         z-index: 1;
     }
 
+    .container-table__header::after {
+        height: 3px;
+    }
+
     .table-row:nth-child(even) {
         background-color: var(--secondary-bg-clr);
     }
 
     .table-row:not(:first-child):hover {
-        background-color: var(--btn-bg-clr);
+        background-color: #1c212f;
+    }
+
+    .table-row:nth-child(even):hover {
+        background-color: #35426a;
     }
 
     .table-row > div {
@@ -589,10 +599,6 @@ h2 {
 
     .table-row > div:hover {
         background-color: initial;
-    }
-
-    .table-row:not(:first-child) > div:hover {
-        background-color: var(--secondary-bg-clr);
     }
 }
 
