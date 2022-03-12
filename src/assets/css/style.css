@@ -159,6 +159,7 @@ h2 {
     font-size: 2em;
     padding: .5rem .75rem;
     border-radius: 0.5rem;
+    text-decoration: none;
     cursor: pointer;
     transition: background-color 150ms ease-in-out, color 100ms ease-in-out;
 }
@@ -384,6 +385,52 @@ h2 {
     color: var(--accent-clr);
 }
 
+.container-sort {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container-sort__checkbox {
+    display: none;
+}
+
+.container-sort__button {
+    position: relative;
+}
+
+.container-sort__button-label {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+}
+
+.container-sort__data {
+    position: absolute;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: max-content;
+    padding: 1rem;
+    background-color: var(--secondary-bg-clr);
+    border-radius: 0 0 0.5rem 0.5rem;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 200ms ease-in-out;
+    z-index: 1;
+}
+
+.container-sort__data-item {
+    cursor: pointer;
+}
+
+.container-sort__checkbox:checked ~ .container-sort__data {
+    transform: scaleY(1);
+}
+
 .container-table {
     display: flex;
     flex-direction: column;
@@ -409,7 +456,6 @@ h2 {
     align-items: center;
     width: inherit;
     padding: 0.25rem;
-    /* outline: 1px solid var(--accent-clr); */
     transition: background-color 200ms ease-in-out;
 }
 
@@ -462,10 +508,7 @@ h2 {
     display: none;
 }
 
-.lastName-checkbox:checked ~ .table-lastName::after {
-    transform: rotate(-180deg);
-}
-
+.lastName-checkbox:checked ~ .table-lastName::after,
 .registrationDate-checkbox:checked ~ .table-registrationDate::after {
     transform: rotate(-180deg);
 }
@@ -568,6 +611,10 @@ h2 {
 
     .container-user__address {
         margin-block-end: 3rem;
+    }
+
+    .container-sort {
+        display: none;
     }
 
     .container-table {

@@ -4,6 +4,8 @@ const adddressCheckbox = document.querySelector(".container-address__checkbox");
 const errorText = document.querySelector(".container-error");
 const loadingElement = document.querySelector(".container-loading");
 const containerTable = document.querySelector(".container-table");
+const sortByList = Array.from( document.querySelectorAll("[data-value]") );
+const sortCheckboxes = Array.from( document.querySelectorAll(".container-table__header-checkbox") );
 
 switch( document.body.id ) {
     case "index":
@@ -20,6 +22,10 @@ function loadIndex() {
 
 function loadTable() {
     window.onload = loadDataFromLocalStorage;
+
+    sortByList.forEach( element => {
+        element.onclick = sortTable;
+    });
 }
 
 function generateUserFromUrl( e ) {
@@ -115,8 +121,7 @@ function loadImage( src ) {
     });
 }
 
-function loadDataFromLocalStorage( e ) {
-    const data = JSON.parse( localStorage.getItem("random-data") );
+function loadData( data ) {
     const itemClassName = "container-table__item";
 
     if( data === null ) return containerTable.append("No data to show.");
@@ -148,4 +153,49 @@ function loadDataFromLocalStorage( e ) {
         row.append( firstName, lastName, country, registrationDate );
         containerTable.appendChild( row );
     });
+}
+
+function loadDataFromLocalStorage( e ) {
+    const data = JSON.parse( localStorage.getItem("random-data") );
+    const sortedBy = JSON.parse( localStorage.getItem("sortedBy") ) || [ null, null ];
+
+    loadData( sortData( data, sortedBy.column, sortedBy.parameter ) );
+}
+
+function sortData( data, column, parameter ) {
+    switch( column ) {
+        case "lastName":
+            data.sort( ( item1, item2 ) => {
+                return parameter == "asc" ? item1.name.last.localeCompare( item2.name.last ) : item2.name.last.localeCompare( item1.name.last );
+            });
+            break;
+        case "registrationDate":
+            data.sort( ( item1, item2 ) => {
+                return parameter == "asc" ? new Date( item1.registered.date ) - new Date( item2.registered.date ) : new Date( item2.registered.date ) - new Date( item1.registered.date );
+            });
+            break;
+    }
+
+    return data;
+}
+
+function sortTable( e ) {
+    const [ column, parameter ] = e.target.dataset.value.split('-');
+    const elements = Array.from( document.querySelectorAll(".container-table__item.table-row") );
+    const data = JSON.parse( localStorage.getItem("random-data") );
+    const checkbox = sortCheckboxes.reduce( ( toSearch, checkbox ) => { return checkbox.className.includes( column ) ? checkbox : toSearch } );
+    const label = document.querySelector(`label[data-value=${column}-${parameter}]`);
+    
+    elements.forEach( element => {
+        element.remove();
+    });
+
+    let sortedData = sortData( data, column, parameter );
+
+    checkbox.checked = parameter != "asc";
+    label.dataset.value = column.concat( "-", ( parameter == "asc" ? "desc" : "asc" ) );
+
+    loadData( sortedData );
+
+    localStorage.setItem( "sortedBy", JSON.stringify( { column, parameter } ) );
 }

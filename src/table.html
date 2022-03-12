@@ -26,13 +26,25 @@
     </header>
     <div class="container">
         <div class="container-table">
+            <div class="container-sort">
+                <input type="checkbox" class="container-sort__checkbox" id="container-sort__checkbox">
+                <a class="container-button container-sort__button">
+                    <label for="container-sort__checkbox" class="container-sort__button-label"></label>Sort by:
+                </a>
+                <div class="container-sort__data">
+                    <div class="container-sort__data-item" data-value="lastName-asc">Last Name Ascending</div>
+                    <div class="container-sort__data-item" data-value="lastName-desc">Last Name Descending</div>
+                    <div class="container-sort__data-item" data-value="registrationDate-asc">Registration Date Ascending</div>
+                    <div class="container-sort__data-item" data-value="registrationDate-desc">Registration Date Descending</div>
+                </div>
+            </div>
             <div class="container-table__header table-row">
                 <input type="checkbox" class="container-table__header-checkbox registrationDate-checkbox" id="registrationDate-checkbox">
                 <input type="checkbox" class="container-table__header-checkbox lastName-checkbox" id="lastName-checkbox">
                 <div class="container-table__header-item table-firstName">First Name</div>
-                <div class="container-table__header-item table-lastName"><label for="lastName-checkbox" class="container-table__header-item__label"></label>Last Name</div>
+                <div class="container-table__header-item table-lastName"><label class="container-table__header-item__label" data-value="lastName-asc"></label>Last Name</div>
                 <div class="container-table__header-item table-country">Country</div>
-                <div class="container-table__header-item table-registrationDate"><label for="registrationDate-checkbox" class="container-table__header-item__label"></label>Registration Date</div>
+                <div class="container-table__header-item table-registrationDate"><label class="container-table__header-item__label" data-value="registrationDate-asc"></label>Registration Date</div>
             </div>
         </div>
     </div>
