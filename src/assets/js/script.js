@@ -158,8 +158,13 @@ function loadData( data ) {
 function loadDataFromLocalStorage( e ) {
     const data = JSON.parse( localStorage.getItem("random-data") );
     const sortedBy = JSON.parse( localStorage.getItem("sortedBy") ) || [ null, null ];
+    const checkbox = sortCheckboxes.reduce( ( toSearch, checkbox ) => { return checkbox.className.includes( sortedBy.column ) ? checkbox : toSearch } );
+    const label = document.querySelector(`label[data-value=${sortedBy.column}-${sortedBy.parameter}]`);
 
     loadData( sortData( data, sortedBy.column, sortedBy.parameter ) );
+
+    checkbox.checked = sortedBy.parameter != "asc";
+    label.dataset.value = sortedBy.column.concat( "-", ( sortedBy.parameter == "asc" ? "desc" : "asc" ) );
 }
 
 function sortData( data, column, parameter ) {
