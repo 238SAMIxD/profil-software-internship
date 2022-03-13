@@ -236,3 +236,55 @@ function loadData( data ) {
     });
 }
 ```
+
+# Hosting website application
+
+There is a way to host a website locally.
+
+## Installing
+
+Website can be hosted by *Node.js*. *NPM* modules should be downloaded fisrt.  
+
+```bash
+npm install
+```
+
+I used following dependencies to host a web application:
+
+```json
+"dependencies": {
+    "express": "^4.17.3",
+    "nodejs": "0.0.0",
+    "open": "^8.4.0",
+    "path": "^0.12.7"
+  },
+```
+
+## Running
+
+In package there is `start` command defined so it is easy to execute it by *npm*.
+
+```bash
+npm start
+npm run start
+node index.js
+```
+
+Default `host` and `port` are stored in constants.
+
+```javascript
+const host = "localhost";
+const port = 3000;
+```
+
+## Application
+
+Application is run by *expressjs* and it is using static webpage. `open` package starts browser on specific address.
+
+```javascript
+app.use( express.static( path.join( __dirname, "public" ) ) );
+app.listen( port, host, () => {
+    console.log(`App running on ${host}:${port}/`);
+    open(`http://${host}:${port}`);
+});
+```
