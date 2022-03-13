@@ -130,7 +130,7 @@ function loadData( data ) {
         const date = new Date( element.registered.date );
         let countries;
 
-        await await fetch("https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/slim-2/slim-2.json").then( response => response.json() ).then( json => countries = json )
+        await await fetch("https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/slim-2/slim-2.json").then( response => response.json() ).then( json => countries = json );
         
         let row = document.createElement("div");
         let firstName = document.createElement("div");
