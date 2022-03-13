@@ -209,8 +209,10 @@ loadData( sortData( data, sortedBy.column, sortedBy.parameter ) );
 function loadData( data ) {
     const itemClassName = "container-table__item";
     if( data === null ) return containerTable.append("No data to show.");
-    data.forEach( element => {
+    data.forEach( async element => {
         const date = new Date( element.registered.date );
+        let countries;
+        await await fetch("https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/slim-2/slim-2.json").then( response => response.json() ).then( json => countries = json );
         let row = document.createElement("div");
         let firstName = document.createElement("div");
         let lastName = document.createElement("div");
@@ -227,7 +229,7 @@ function loadData( data ) {
         registrationDate.dataset.label = "Registration Date";
         firstName.innerText = element.name.first;
         lastName.innerText = element.name.last;
-        country.innerText = element.location.country;
+        country.innerText = countries.reduce( ( final, next ) => { return element.nat == next['alpha-2'] ? next.name : final } );
         registrationDate.innerText = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
         row.append( firstName, lastName, country, registrationDate );
         containerTable.appendChild( row );
