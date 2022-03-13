@@ -27,13 +27,11 @@
   "homepage": "https://github.com/238SAMIxD/profil-software-internship#readme",
   "dependencies": {
     "express": "^4.17.3",
-    "fs": "0.0.1-security",
     "mocha": "^9.2.2",
     "nodejs": "0.0.0",
     "open": "^8.4.0",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
+    "path": "^0.12.7",
     "zombie": "^6.1.4"
-  }
+  },
+  "devDependencies": {}
 }
