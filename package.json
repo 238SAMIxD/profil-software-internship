@@ -1,0 +1,39 @@
+{
+  "name": "profil-software-internship",
+  "version": "1.0.0",
+  "description": "Profil Software Internship Task package to handle tests.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/238SAMIxD/profil-software-internship.git"
+  },
+  "keywords": [
+    "front-end",
+    "js",
+    "nodejs"
+  ],
+  "author": "Samuel Jędrzejewski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/238SAMIxD/profil-software-internship/issues"
+  },
+  "homepage": "https://github.com/238SAMIxD/profil-software-internship#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "fs": "0.0.1-security",
+    "mocha": "^9.2.2",
+    "nodejs": "0.0.0",
+    "open": "^8.4.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "zombie": "^6.1.4"
+  }
+}
