@@ -466,7 +466,7 @@ h2 {
     padding-inline-end: 1rem;
     padding-block: 1rem;
     background-color: var(--table-bg-clr);
-    text-align: center;
+    text-align: right;
     margin-block-end: 0.25rem;
     transition: background-color 200ms ease-in-out;
     position: relative;
@@ -474,7 +474,7 @@ h2 {
 
 .table-row > div::before {
     content: attr(data-label);
-    padding-inline-start: 1rem;
+    padding-inline: 1rem;
 }
 
 .table-row > div:last-child::after {
@@ -624,6 +624,7 @@ h2 {
 
     .table-row {
         flex-direction: row;
+        align-items: stretch;
         position: relative;
         transition: opacity 400ms ease-in-out;
         padding: 0;
@@ -644,18 +645,16 @@ h2 {
 
     .table-row > div {
         justify-content: center;
+        align-items: center;
+        text-align: center;
         margin: 0;
     }
 
-    .table-row:first-child > div:hover {
-        background-color: var(--table-bg-clr);
-    }
-
-    .table-row:not(:first-child):hover > div {
+    .table-row:hover > div {
         background-color: #35426a;
     }
 
-    .table-row:not(:first-child) > div:hover {
+    .table-row > div:hover {
         opacity: 0.85;
     }
 

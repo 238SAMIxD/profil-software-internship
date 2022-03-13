@@ -114,8 +114,8 @@ function loadImage( src ) {
     return new Promise( ( resolve, reject ) => {
         const image = new Image();
 
-        image.addEventListener('load', resolve);
-        image.addEventListener('error', reject);
+        image.addEventListener( 'load', resolve );
+        image.addEventListener( 'error', reject );
 
         image.src = src;
     });
@@ -126,9 +126,12 @@ function loadData( data ) {
 
     if( data === null ) return containerTable.append("No data to show.");
     
-    data.forEach( element => {
+    data.forEach( async element => {
         const date = new Date( element.registered.date );
+        let countries;
 
+        await await fetch("https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/slim-2/slim-2.json").then( response => response.json() ).then( json => countries = json )
+        
         let row = document.createElement("div");
         let firstName = document.createElement("div");
         let lastName = document.createElement("div");
@@ -147,7 +150,7 @@ function loadData( data ) {
 
         firstName.innerText = element.name.first;
         lastName.innerText = element.name.last;
-        country.innerText = element.location.country;
+        country.innerText = countries.reduce( ( final, next ) => { return element.nat == next['alpha-2'] ? next.name : final } );
         registrationDate.innerText = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
         row.append( firstName, lastName, country, registrationDate );
@@ -163,8 +166,11 @@ function loadDataFromLocalStorage( e ) {
 
     loadData( sortData( data, sortedBy.column, sortedBy.parameter ) );
 
-    checkbox.checked = sortedBy.parameter != "asc";
-    label.dataset.value = sortedBy.column.concat( "-", ( sortedBy.parameter == "asc" ? "desc" : "asc" ) );
+    if( label ) {
+        checkbox.checked = sortedBy.parameter != "asc";
+        label.dataset.value = sortedBy.column.concat( "-", ( sortedBy.parameter == "asc" ? "desc" : "asc" ) );
+        label.parentElement.style.opacity = "0.75"
+    }
 }
 
 function sortData( data, column, parameter ) {
@@ -194,6 +200,9 @@ function sortTable( e ) {
     elements.forEach( element => {
         element.remove();
     });
+
+    document.querySelectorAll("label[data-value]").forEach( element => { element.parentElement.style.opacity = "1" } );
+    label.parentElement.style.opacity = "0.75";
 
     let sortedData = sortData( data, column, parameter );
 
