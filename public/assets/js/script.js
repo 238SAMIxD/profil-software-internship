@@ -123,14 +123,18 @@ function loadImage( src ) {
 
 function loadData( data ) {
     const itemClassName = "container-table__item";
+    const noData = document.createElement("p");
 
-    if( data === undefined || data === null ) return containerTable.childNodes.length < 6 ? containerTable.appendChild( document.createTextNode("No data to show.") ) : 0;
+    noData.innerText = "No data to show.";
+    noData.className = "container-table__error";
+
+    if( data === undefined || data === null ) return containerTable.childNodes.length < 6 ? containerTable.append( noData ) : 0;
     
     data.forEach( async element => {
         const date = new Date( element.registered.date );
         let countries;
 
-        await await fetch("https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/slim-2/slim-2.json").then( response => response.json() ).then( json => countries = json );
+        await fetch("https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/slim-2/slim-2.json").then( response => response.json() ).then( json => countries = json );
         
         let row = document.createElement("div");
         let firstName = document.createElement("div");
