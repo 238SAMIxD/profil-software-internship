@@ -124,7 +124,7 @@ function loadImage( src ) {
 function loadData( data ) {
     const itemClassName = "container-table__item";
 
-    if( data === null ) return containerTable.append("No data to show.");
+    if( data === undefined || data === null ) return containerTable.childNodes.length < 6 ? containerTable.appendChild( document.createTextNode("No data to show.") ) : 0;
     
     data.forEach( async element => {
         const date = new Date( element.registered.date );
@@ -174,6 +174,8 @@ function loadDataFromLocalStorage( e ) {
 }
 
 function sortData( data, column, parameter ) {
+    if( data === undefined || data === null ) return;
+
     switch( column ) {
         case "lastName":
             data.sort( ( item1, item2 ) => {
