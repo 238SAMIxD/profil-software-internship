@@ -334,7 +334,7 @@ I seperated tests by device so there are two different ways to test. Features be
 
 ### Desktop
 
-![Desktop tests preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/tests-dekstop.png)  
+![Desktop tests preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/tests-desktop.png)  
 
 ### Mobile
 
