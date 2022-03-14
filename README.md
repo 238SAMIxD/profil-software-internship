@@ -270,6 +270,8 @@ npm run start
 node index.js
 ```
 
+![Console preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/host.png)  
+
 Default `host` and `port` are stored in constants.
 
 ```javascript
@@ -288,3 +290,52 @@ app.listen( port, host, () => {
     open(`http://${host}:${port}`);
 });
 ```
+
+# Testing
+
+I used `cypress` framework to handle integration tests.
+
+## Instalation
+
+Building application should also include testing library. Another dependencies has been added:  
+
+```json
+"dependencies": {
+    "cypress": "^9.5.1",
+    "cypress-localstorage-commands": "^1.7.0"
+}
+```
+
+## Running
+
+Test run by `Cypress` are easy to execute by in-build programme. To reach the GUI use *npm*.
+
+```bash
+npm test
+npx cypress open
+```
+
+![Console preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/test.png)  
+
+The programme will show up and tests should be loaded. To execute them, just click `Run 1 integration spec` or click right on the test file.
+
+![Cypress preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/cypress.png)  
+
+Selected browser will appear and tests will run.
+
+## Tests
+
+I seperated tests by device so there are two different ways to test. Features being tested:
+
+1) First time on page
+2) Generating 5 users
+3) Sorting results
+4) Generate users with showed and hidden address
+
+### Desktop
+
+![Desktop tests preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/tests-dekstop.png)  
+
+### Mobile
+
+![Mobile tests preview](https://github.com/238SAMIxD/profil-software-internship/blob/main/img/tests-mobile.png)  
