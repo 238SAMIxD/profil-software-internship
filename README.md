@@ -257,7 +257,7 @@ I used following dependencies to host a web application:
     "nodejs": "0.0.0",
     "open": "^8.4.0",
     "path": "^0.12.7"
-  },
+},
 ```
 
 ## Running
