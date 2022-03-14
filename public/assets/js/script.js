@@ -201,7 +201,7 @@ function sortTable( e ) {
     const elements = Array.from( document.querySelectorAll(".container-table__item.table-row") );
     const data = JSON.parse( localStorage.getItem("random-data") );
     const checkbox = sortCheckboxes.reduce( ( toSearch, checkbox ) => { return checkbox.className.includes( column ) ? checkbox : toSearch } );
-    const label = document.querySelector(`label[data-value=${column}-${parameter}]`);
+    const label = document.querySelector(`label[data-value=${column}-${parameter}]`) || document.querySelector(`div[data-value=${column}-${parameter}]`);
     
     elements.forEach( element => {
         element.remove();
